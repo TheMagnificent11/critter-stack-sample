@@ -4,16 +4,16 @@ public static class Menu
 {
     public static readonly Pizza[] Pizzas = new Pizza[]
     {
-        Margherita,
-        Marinara,
-        QuattroStagioni,
-        Carbonara,
-        FruttiDiMare,
-        QuattroFormaggi,
-        Crudo,
-        Napoletana,
-        Pugliese,
-        Montanara
+        Margherita!,
+        Marinara!,
+        QuattroStagioni!,
+        Carbonara!,
+        FruttiDiMare!,
+        QuattroFormaggi!,
+        Crudo!,
+        Napoletana!,
+        Pugliese!,
+        Montanara!
     };
 
     private static readonly Pizza Margherita = new(1, "Margherita", "Tomato sauce, mozzarella, and oregano", 5.00m);

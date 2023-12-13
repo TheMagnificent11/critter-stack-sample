@@ -31,7 +31,7 @@ public class PlaceOrderEndpoint(
             var orderPlacedEvent = new OrderPlacedEvent(
                 order.Id,
                 order.Pizzas,
-                correlationContextAccessor.CorrelationContext.CorrelationId);
+                correlationContextAccessor?.CorrelationContext?.CorrelationId ?? Guid.NewGuid().ToString());
 
             await messageBus.PublishAsync(orderPlacedEvent);
         }

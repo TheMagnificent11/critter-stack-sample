@@ -13,15 +13,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 		Directory.Build.props = Directory.Build.props
 		Directory.Packages.props = Directory.Packages.props
+		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pizzeria.Kitchen", "Pizzeria.Kitchen\Pizzeria.Kitchen.csproj", "{85356155-9A27-4474-AA3C-AF9A8EDD0C0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizzeria.Kitchen", "Pizzeria.Kitchen\Pizzeria.Kitchen.csproj", "{85356155-9A27-4474-AA3C-AF9A8EDD0C0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pizzeria.Delivery", "Pizzeria.Delivery\Pizzeria.Delivery.csproj", "{FB3924FD-70A6-42B2-A5DF-4F7D7479DAEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizzeria.Delivery", "Pizzeria.Delivery\Pizzeria.Delivery.csproj", "{FB3924FD-70A6-42B2-A5DF-4F7D7479DAEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pizzeria.Common", "Pizzeria.Common\Pizzeria.Common.csproj", "{9EA98739-B954-4A29-9FE4-4480A8917518}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizzeria.Common", "Pizzeria.Common\Pizzeria.Common.csproj", "{9EA98739-B954-4A29-9FE4-4480A8917518}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pizzeria.Middleware", "Pizzeria.Middleware\Pizzeria.Middleware.csproj", "{4E4C5B58-3893-440D-A6EE-12055541B3AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizzeria.Middleware", "Pizzeria.Middleware\Pizzeria.Middleware.csproj", "{4E4C5B58-3893-440D-A6EE-12055541B3AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -13,11 +13,23 @@ using Wolverine.RabbitMQ;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var postgreSqlConnectionString = builder.Configuration.GetConnectionString("Postgres");
+if (string.IsNullOrWhiteSpace(postgreSqlConnectionString))
+{
+    throw new ApplicationException("Postgres connection string is missing");
+}
+
+var rabbitMqConnectionString = builder.Configuration.GetConnectionString("RabbitMQ");
+if (string.IsNullOrWhiteSpace(rabbitMqConnectionString))
+{
+    throw new ApplicationException("RabbitMQ connection string is missing");
+}
+
 builder.Services.AddLogging();
 
 builder.Services.AddMarten(options =>
 {
-    options.Connection(builder.Configuration.GetConnectionString("Postgres"));
+    options.Connection(postgreSqlConnectionString);
     options.AutoCreateSchemaObjects = AutoCreate.All;
     options.DatabaseSchemaName = "pizzeria";
 });
@@ -30,7 +42,7 @@ builder.Services.AddCorrelate(options =>
 
 builder.Host.UseWolverine(options =>
 {
-    options.UseRabbitMq(rabbit => rabbit.HostName = builder.Configuration.GetConnectionString("RabbitMQ"));
+    options.UseRabbitMq(rabbit => rabbit.HostName = rabbitMqConnectionString);
     options.UseFluentValidation();
 
     options.Policies.AddOrderDomainEventLoggingMiddleware();
