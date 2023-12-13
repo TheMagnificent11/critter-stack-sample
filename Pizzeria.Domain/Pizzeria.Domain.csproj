@@ -1,0 +1,5 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\Pizzeria.Common\Pizzeria.Common.csproj" />
+  </ItemGroup>
+</Project>

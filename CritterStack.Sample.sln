@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizzeria.Store", "Pizzeria.Store\Pizzeria.Store.csproj", "{D34C2186-47A0-4EAA-A5A8-42EE82374045}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizzeria.Domain", "Pizzeria.Domain\Pizzeria.Domain.csproj", "{028FC1F6-A99C-474D-930E-ADB81932B938}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{26603744-DE73-4EE4-A397-9D2BF06945AC}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		Directory.Packages.props = Directory.Packages.props
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pizzeria.Kitchen", "Pizzeria.Kitchen\Pizzeria.Kitchen.csproj", "{85356155-9A27-4474-AA3C-AF9A8EDD0C0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pizzeria.Delivery", "Pizzeria.Delivery\Pizzeria.Delivery.csproj", "{FB3924FD-70A6-42B2-A5DF-4F7D7479DAEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pizzeria.Common", "Pizzeria.Common\Pizzeria.Common.csproj", "{9EA98739-B954-4A29-9FE4-4480A8917518}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pizzeria.Middleware", "Pizzeria.Middleware\Pizzeria.Middleware.csproj", "{4E4C5B58-3893-440D-A6EE-12055541B3AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D34C2186-47A0-4EAA-A5A8-42EE82374045}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D34C2186-47A0-4EAA-A5A8-42EE82374045}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D34C2186-47A0-4EAA-A5A8-42EE82374045}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D34C2186-47A0-4EAA-A5A8-42EE82374045}.Release|Any CPU.Build.0 = Release|Any CPU
+		{028FC1F6-A99C-474D-930E-ADB81932B938}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{028FC1F6-A99C-474D-930E-ADB81932B938}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{028FC1F6-A99C-474D-930E-ADB81932B938}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{028FC1F6-A99C-474D-930E-ADB81932B938}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85356155-9A27-4474-AA3C-AF9A8EDD0C0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85356155-9A27-4474-AA3C-AF9A8EDD0C0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85356155-9A27-4474-AA3C-AF9A8EDD0C0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85356155-9A27-4474-AA3C-AF9A8EDD0C0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB3924FD-70A6-42B2-A5DF-4F7D7479DAEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB3924FD-70A6-42B2-A5DF-4F7D7479DAEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB3924FD-70A6-42B2-A5DF-4F7D7479DAEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB3924FD-70A6-42B2-A5DF-4F7D7479DAEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EA98739-B954-4A29-9FE4-4480A8917518}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EA98739-B954-4A29-9FE4-4480A8917518}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EA98739-B954-4A29-9FE4-4480A8917518}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EA98739-B954-4A29-9FE4-4480A8917518}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E4C5B58-3893-440D-A6EE-12055541B3AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E4C5B58-3893-440D-A6EE-12055541B3AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E4C5B58-3893-440D-A6EE-12055541B3AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E4C5B58-3893-440D-A6EE-12055541B3AF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {72AD0354-EFE8-427B-B3BF-12AF4BC6AE48}
+	EndGlobalSection
+EndGlobal
