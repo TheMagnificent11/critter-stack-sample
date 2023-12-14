@@ -13,8 +13,8 @@ using Wolverine.RabbitMQ;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var postgreSqlConnectionString = builder.Configuration.GetConnectionString("Postgres");
-if (string.IsNullOrWhiteSpace(postgreSqlConnectionString))
+var postgresSqlConnectionString = builder.Configuration.GetConnectionString("Postgres");
+if (string.IsNullOrWhiteSpace(postgresSqlConnectionString))
 {
     throw new ApplicationException("Postgres connection string is missing");
 }
@@ -29,7 +29,7 @@ builder.Services.AddLogging(options => options.AddSeq());
 
 builder.Services.AddMarten(options =>
 {
-    options.Connection(postgreSqlConnectionString);
+    options.Connection(postgresSqlConnectionString);
     options.AutoCreateSchemaObjects = AutoCreate.All;
     options.DatabaseSchemaName = "pizzeria";
 });
