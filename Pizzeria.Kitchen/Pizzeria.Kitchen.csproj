@@ -6,7 +6,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Pizzeria.Middleware\Pizzeria.Middleware.csproj" />
+    <ProjectReference Include="..\Pizzeria.Domain\Pizzeria.Domain.csproj" />
   </ItemGroup>
 
 </Project>

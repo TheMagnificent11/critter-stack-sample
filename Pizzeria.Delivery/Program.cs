@@ -1,6 +1,5 @@
 using Pizzeria.Common;
 using Pizzeria.Domain;
-using Pizzeria.Middleware;
 using Wolverine;
 using Wolverine.RabbitMQ;
 
@@ -11,8 +10,6 @@ builder.Services.AddLogging(options => options.AddSeq());
 builder.Host.UseWolverine(options =>
 {
     options.UseRabbitMq(rabbit => rabbit.HostName = builder.Configuration.GetConnectionString("RabbitMQ"));
-
-    options.Policies.AddOrderDomainEventLoggingMiddleware();
 
     options.ListenToRabbitQueue(QueueNames.DeliveryOrders)
         .PreFetchCount(10)

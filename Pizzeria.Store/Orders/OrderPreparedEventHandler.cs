@@ -11,17 +11,20 @@ public class OrderPreparedEventHandler(
 {
     public async Task Handle(OrderPreparedEvent @event, CancellationToken cancellationToken)
     {
-        var order = await this.GetPreparedOrder(@event.OrderId, cancellationToken);
-        if (order == null)
+        using (logger.BeginOrderEventScope(@event))
         {
-            logger.LogError("Order {OrderId} not found", @event.OrderId);
-            return;
-        }
+            var order = await this.GetPreparedOrder(@event.OrderId, cancellationToken);
+            if (order == null)
+            {
+                logger.LogError("Order {OrderId} not found", @event.OrderId);
+                return;
+            }
 
-        await messageBus.PublishAsync(new OrderReadyForDeliveryEvent(
-            order.Id,
-            order.DeliveryAddress,
-            @event.CorrelationId));
+            await messageBus.PublishAsync(new OrderReadyForDeliveryEvent(
+                order.Id,
+                order.DeliveryAddress,
+                @event.CorrelationId));
+        }
     }
 
     private async Task<Order?> GetPreparedOrder(Guid orderId, CancellationToken cancellationToken)

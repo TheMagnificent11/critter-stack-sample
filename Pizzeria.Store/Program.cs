@@ -3,7 +3,6 @@ using Correlate.DependencyInjection;
 using Marten;
 using Pizzeria.Common;
 using Pizzeria.Domain;
-using Pizzeria.Middleware;
 using Pizzeria.Store;
 using Weasel.Core;
 using Wolverine;
@@ -44,8 +43,6 @@ builder.Host.UseWolverine(options =>
 {
     options.UseRabbitMq(rabbit => rabbit.HostName = rabbitMqConnectionString);
     options.UseFluentValidation();
-
-    options.Policies.AddOrderDomainEventLoggingMiddleware();
 
     options.PublishMessage<OrderPlacedEvent>()
         .ToRabbitQueue(QueueNames.Orders)

@@ -7,6 +7,7 @@
     <PackageVersion Include="Correlate.AspNetCore" Version="5.2.0" />
     <PackageVersion Include="Marten" Version="6.4.0" />
     <PackageVersion Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
     <PackageVersion Include="Seq.Extensions.Logging" Version="6.1.0" />
     <PackageVersion Include="StyleCop.Analyzers" Version="1.1.118" />
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.5.0" />
