@@ -25,7 +25,7 @@ if (string.IsNullOrWhiteSpace(rabbitMqConnectionString))
     throw new ApplicationException("RabbitMQ connection string is missing");
 }
 
-builder.Services.AddLogging();
+builder.Services.AddLogging(options => options.AddSeq());
 
 builder.Services.AddMarten(options =>
 {

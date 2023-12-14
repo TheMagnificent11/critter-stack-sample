@@ -6,7 +6,7 @@ using Wolverine.RabbitMQ;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddLogging();
+builder.Services.AddLogging(options => options.AddSeq());
 
 builder.Host.UseWolverine(options =>
 {

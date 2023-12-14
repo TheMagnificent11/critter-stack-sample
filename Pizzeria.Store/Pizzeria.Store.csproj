@@ -3,6 +3,7 @@
   <ItemGroup>
     <PackageReference Include="Correlate.AspNetCore" />
     <PackageReference Include="Marten" />
+    <PackageReference Include="Seq.Extensions.Logging" />
     <PackageReference Include="Swashbuckle.AspNetCore" />
     <PackageReference Include="WolverineFx.FluentValidation" />
     <PackageReference Include="WolverineFx.Http" />
