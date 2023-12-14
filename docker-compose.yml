@@ -1,7 +1,7 @@
 services:
   seq:
     image: datalust/seq
-    container_name: critter-stack-seq
+    container_name: seq
     ports:
       - 5341:80
     environment:
@@ -10,7 +10,7 @@ services:
       - ./seq:/data
 
   postgresdb:
-    image: critter-stack-postgres
+    image: postgres
     container_name: sample.pizzeria.postgres
     environment:
       - POSTGRES_PASSWORD=YourStrongPassword_17
@@ -23,7 +23,7 @@ services:
 
   rabbitmq:
     image: rabbitmq:3.12-management-alpine
-    container_name: critter-stack-rabbitmq
+    container_name: rabbitmq
     restart: unless-stopped
     ports:
       - 5672:5672
