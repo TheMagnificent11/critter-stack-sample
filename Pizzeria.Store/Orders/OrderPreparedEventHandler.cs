@@ -16,12 +16,12 @@ public class OrderPreparedEventHandler(
             var order = await this.GetPreparedOrder(@event.OrderId, cancellationToken);
             if (order == null)
             {
-                logger.LogError("Order {OrderId} not found", @event.OrderId);
+                logger.LogError("Order not found");
                 return;
             }
 
             await messageBus.PublishAsync(new OrderReadyForDeliveryEvent(
-                order.Id,
+                @event.OrderId,
                 order.DeliveryAddress,
                 @event.CorrelationId));
         }
@@ -41,6 +41,8 @@ public class OrderPreparedEventHandler(
             order.PizzasPrepared();
 
             await session.SaveChangesAsync(cancellationToken);
+
+            logger.LogInformation("Order is ready for delivery");
 
             return order;
         }

@@ -22,9 +22,11 @@ public class OrderPlacedEventHandler(IMessageBus messageBus, ILogger<OrderPlaced
                 await Task.Delay(TimeSpan.FromSeconds(5), cancellationToken);
 
                 logger.LogInformation("Pizza {PizzaId} is ready", item.Id);
-
-                await messageBus.PublishAsync(new OrderPreparedEvent(@event.OrderId, @event.CorrelationId));
             }
+
+            await messageBus.PublishAsync(new OrderPreparedEvent(@event.OrderId, @event.CorrelationId));
+
+            logger.LogInformation("Order has been prepared");
         }
     }
 }

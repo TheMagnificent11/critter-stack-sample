@@ -16,7 +16,7 @@ public class OrderReadyForDeliveryEventHandler(
             var seconds = random.Next(5, 10);
             await Task.Delay(TimeSpan.FromSeconds(seconds), cancellationToken);
 
-            logger.LogInformation("Order {OrderId} has been delivered", @event.OrderId);
+            logger.LogInformation("Order has been delivered");
 
             await messageBus.PublishAsync(new OrderDeliveredEvent(@event.OrderId, @event.CorrelationId));
         }

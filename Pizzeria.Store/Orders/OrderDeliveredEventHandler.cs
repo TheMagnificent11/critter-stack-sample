@@ -14,13 +14,15 @@ public class OrderDeliveredEventHandler(IDocumentStore store, ILogger<OrderDeliv
 
             if (order == null)
             {
-                logger.LogError("Order {OrderId} not found", @event.OrderId);
+                logger.LogError("Order not found");
                 return;
             }
 
             order.PizzasDelivered();
 
             await session.SaveChangesAsync(cancellationToken);
+
+            logger.LogInformation("Order completed");
         }
     }
 }
