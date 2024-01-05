@@ -12,13 +12,16 @@ public class OrderDeliveredEventHandler(IDocumentStore store, ILogger<OrderDeliv
         {
             var order = await session.LoadAsync<Order>(@event.OrderId, cancellationToken);
 
-            if (order == null)
+            // There appears to be a bug in Marten where the session.LoadAsync changers the order id to a new guid
+            if (order == null || order.Id != @event.OrderId)
             {
                 logger.LogError("Order not found");
                 return;
             }
 
             order.PizzasDelivered();
+
+            session.Update(order);
 
             await session.SaveChangesAsync(cancellationToken);
 

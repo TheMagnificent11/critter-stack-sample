@@ -61,6 +61,15 @@ builder.Host.UseWolverine(options =>
         .PreFetchCount(10)
         .ListenerCount(5)
         .UseDurableInbox();
+
+    // TODO: Add error handling
+    //options.Policies
+    //    .OnException<Exception>(exception =>
+    //    {
+    //        logger.LogError(exception, "Unhandled exception");
+    //        return true;
+    //    })
+    //    .Discard();
 });
 
 builder.Services.AddEndpointsApiExplorer();

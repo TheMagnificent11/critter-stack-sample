@@ -33,12 +33,15 @@ public class OrderPreparedEventHandler(
         {
             var order = await session.LoadAsync<Order>(orderId, cancellationToken);
 
-            if (order == null)
+            // There appears to be a bug in Marten where the session.LoadAsync changers the order id to a new guid
+            if (order == null || order.Id != orderId)
             {
                 return null;
             }
 
             order.PizzasPrepared();
+
+            session.Update(order);
 
             await session.SaveChangesAsync(cancellationToken);
 
