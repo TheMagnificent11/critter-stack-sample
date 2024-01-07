@@ -1,0 +1,36 @@
+services:
+  seq:
+    image: datalust/seq
+    container_name: seq
+    ports:
+      - 5341:80
+    environment:
+      - ACCEPT_EULA=Y
+    volumes:
+      - ./seq:/data
+
+  postgresdb:
+    image: postgres
+    container_name: sample.pizzeria.postgres
+    environment:
+      - POSTGRES_PASSWORD=YourStrongPassword_17
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=pizzeria
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  rabbitmq:
+    image: rabbitmq:3.12-management-alpine
+    container_name: rabbitmq
+    restart: unless-stopped
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - ./rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+      - ./rabbitmq-definitions.json:/etc/rabbitmq/definitions.json
+
+volumes:
+  postgres_data:
