@@ -31,9 +31,9 @@ There are the following microservices in the application.
 
 1. Clone this repo.
 2. Run `docker-compose up` to start the RabbitMQ, PostgreSQL and Seq containers.
-3. Run `dotnet run --project .\src\Pizzeria.Store\Pizzeria.Store.csproj` to start the `Pizzeria.Store` service.
-4. Run `dotnet run --project .\src\Pizzeria.Kitchen\Pizzeria.Kitchen.csproj` to start the `Pizzeria.Kitchen` service.
-5. Run `dotnet run --project .\src\Pizzeria.Delivery\Pizzeria.Delivery.csproj` to start the `Pizzeria.Delivery` service.
+3. Run `dotnet run --project ./Pizzeria.Store/Pizzeria.Store.csproj` to start the `Pizzeria.Store` service.
+4. Run `dotnet run --project ./Pizzeria.Kitchen/Pizzeria.Kitchen.csproj` to start the `Pizzeria.Kitchen` service.
+5. Run `dotnet run --project ./Pizzeria.Delivery/Pizzeria.Delivery.csproj` to start the `Pizzeria.Delivery` service.
 6. Send an order to the Pizza Store using the `POST /order` endpoint
 7. Check the logs in [Seq](http://localhost:5341/#/events) for each service to see the sequence of events.
 
