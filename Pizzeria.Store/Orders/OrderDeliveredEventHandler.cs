@@ -19,7 +19,7 @@ public class OrderDeliveredEventHandler(IDocumentStore store, ILogger<OrderDeliv
             }
 
             // `Marten` can't initialize properties that cannot be set by JSON deserialization.
-            // So using DDD, not every property is settable and thus `Pizza.IsPrepared` is true in the database,
+            // So using DDD, not every property is settable and thus `Order.IsPrepared` is true in the database,
             // but false here, leading to an exception been thrown by this method.
             order.PizzasDelivered();
 
