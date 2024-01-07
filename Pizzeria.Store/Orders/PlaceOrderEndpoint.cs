@@ -20,7 +20,7 @@ public class PlaceOrderEndpoint(
             var pizzas = Domain.Menu.Pizzas
                 .Where(x => command.PizzaIds.Contains(x.Id))
                 .ToArray();
-            var order = new Order(command.CustomerName, command.DeliveryAddress, pizzas);
+            var order = new Order(Guid.NewGuid(), command.CustomerName, command.DeliveryAddress, pizzas);
 
             session.Store(order);
 

@@ -12,13 +12,15 @@ public class OrderDeliveredEventHandler(IDocumentStore store, ILogger<OrderDeliv
         {
             var order = await session.LoadAsync<Order>(@event.OrderId, cancellationToken);
 
-            // There appears to be a bug in Marten where the session.LoadAsync changers the order id to a new guid
             if (order == null || order.Id != @event.OrderId)
             {
                 logger.LogError("Order not found");
                 return;
             }
 
+            // `Marten` can't initialize properties that cannot be set by JSON deserialization.
+            // So using DDD, not every property is settable and thus `Pizza.IsPrepared` is true in the database,
+            // but false here, leading to an exception been thrown by this method.
             order.PizzasDelivered();
 
             session.Update(order);

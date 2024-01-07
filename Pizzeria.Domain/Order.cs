@@ -1,12 +1,20 @@
 ﻿namespace Pizzeria.Domain;
 
-public class Order(string customerName, string deliveryAddress, Pizza[] pizzas)
+public class Order
 {
-    public Guid Id { get; protected set; } = Guid.NewGuid();
-    public DateTime OrderDate { get; protected set; } = DateTime.UtcNow;
-    public string CustomerName { get; protected set; } = customerName;
-    public string DeliveryAddress { get; protected set; } = deliveryAddress;
-    public Pizza[] Pizzas { get; protected set; } = pizzas;
+    public Order(Guid id, string customerName, string deliveryAddress, Pizza[] pizzas)
+    {
+        this.Id = id;
+        this.CustomerName = customerName;
+        this.DeliveryAddress = deliveryAddress;
+        this.Pizzas = pizzas;
+    }
+
+    public Guid Id { get; protected set; }
+    public DateTime OrderDate { get; protected set; }
+    public string CustomerName { get; protected set; }
+    public string DeliveryAddress { get; protected set; }
+    public Pizza[] Pizzas { get; protected set; }
     public decimal TotalPrice => this.Pizzas.Sum(x => x.Price);
     public bool IsPrepared { get; protected set; }
     public DateTime? PreparationDate { get; protected set; }
