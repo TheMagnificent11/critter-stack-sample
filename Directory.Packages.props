@@ -4,6 +4,9 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
+    <PackageVersion Include="Aspire.Hosting" Version="8.0.0-preview.2.23619.3" />
+    <PackageVersion Include="Aspire.Npgsql" Version="8.0.0-preview.2.23619.3" />
+    <PackageVersion Include="Aspire.RabbitMQ.Client" Version="8.0.0-preview.2.23619.3" />
     <PackageVersion Include="Correlate.AspNetCore" Version="5.2.0" />
     <PackageVersion Include="Marten" Version="6.4.1" />
     <PackageVersion Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0" />

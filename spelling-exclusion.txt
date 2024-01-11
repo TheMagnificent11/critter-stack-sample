@@ -1,3 +1,10 @@
-postgres
 Formaggi
 Montanara
+
+datalust
+entrypoint
+initdb
+postgres
+postgresdb
+postgresql
+rabbitmq

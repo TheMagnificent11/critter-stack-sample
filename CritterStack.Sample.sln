@@ -14,8 +14,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Build.props = Directory.Build.props
 		Directory.Packages.props = Directory.Packages.props
 		docker-compose.yml = docker-compose.yml
-		rabbitmq-definitions.json = rabbitmq-definitions.json
-		rabbitmq.conf = rabbitmq.conf
 		README.md = README.md
 		spelling-exclusion.txt = spelling-exclusion.txt
 	EndProjectSection
@@ -25,6 +23,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizzeria.Delivery", "Pizzeria.Delivery\Pizzeria.Delivery.csproj", "{FB3924FD-70A6-42B2-A5DF-4F7D7479DAEB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizzeria.Common", "Pizzeria.Common\Pizzeria.Common.csproj", "{9EA98739-B954-4A29-9FE4-4480A8917518}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pizzeria.AppHost", "Pizzeria.AppHost\Pizzeria.AppHost.csproj", "{858EB6B8-41F8-4C05-BB4B-C3DCE77109BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,6 +52,10 @@ Global
 		{9EA98739-B954-4A29-9FE4-4480A8917518}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EA98739-B954-4A29-9FE4-4480A8917518}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9EA98739-B954-4A29-9FE4-4480A8917518}.Release|Any CPU.Build.0 = Release|Any CPU
+		{858EB6B8-41F8-4C05-BB4B-C3DCE77109BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{858EB6B8-41F8-4C05-BB4B-C3DCE77109BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{858EB6B8-41F8-4C05-BB4B-C3DCE77109BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{858EB6B8-41F8-4C05-BB4B-C3DCE77109BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
