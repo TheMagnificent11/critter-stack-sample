@@ -30,7 +30,10 @@ builder.Services.AddMarten(options =>
 {
     options.Connection(postgresSqlConnectionString);
     options.AutoCreateSchemaObjects = AutoCreate.All;
-    options.DatabaseSchemaName = "pizzeria";
+    options.UseDefaultSerialization(
+        serializerType: Marten.Services.Json.SerializerType.SystemTextJson,
+        enumStorage: EnumStorage.AsString,
+        casing: Casing.CamelCase);
 });
 
 builder.Services.AddCorrelate(options =>
@@ -61,15 +64,6 @@ builder.Host.UseWolverine(options =>
         .PreFetchCount(10)
         .ListenerCount(5)
         .UseDurableInbox();
-
-    // TODO: Add error handling
-    //options.Policies
-    //    .OnException<Exception>(exception =>
-    //    {
-    //        logger.LogError(exception, "Unhandled exception");
-    //        return true;
-    //    })
-    //    .Discard();
 });
 
 builder.Services.AddEndpointsApiExplorer();
