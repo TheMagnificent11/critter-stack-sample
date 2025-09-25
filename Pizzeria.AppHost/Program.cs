@@ -9,9 +9,7 @@ var databaseServer = builder.AddPostgres(ServiceNames.DatabaseServer)
     .AddDatabase(ServiceNames.StoreDatabase);
 
 var messageBroker = builder.AddRabbitMQ(ServiceNames.MessageBroker)
-    .WithManagementPlugin()
-    .WithBindMount("./rabbitmq-definitions.json", "/etc/rabbitmq/definitions.json")
-    .WithEnvironment("RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS", "-rabbitmq_management load_definitions \"/etc/rabbitmq/definitions.json\"");
+    .WithManagementPlugin();
 
 var seq = builder.AddSeq(ServiceNames.Logging);
 
