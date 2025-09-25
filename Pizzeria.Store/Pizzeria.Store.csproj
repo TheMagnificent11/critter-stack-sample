@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
   
   <ItemGroup>
+    <PackageReference Include="Aspire.Npgsql" />
     <PackageReference Include="Correlate.AspNetCore" />
     <PackageReference Include="Marten" />
     <PackageReference Include="Seq.Extensions.Logging" />
@@ -9,9 +10,10 @@
     <PackageReference Include="WolverineFx.Http" />
     <PackageReference Include="WolverineFx.RabbitMQ" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <ProjectReference Include="..\Pizzeria.Domain\Pizzeria.Domain.csproj" />
+    <ProjectReference Include="..\Pizzeria.ServiceDefaults\Pizzeria.ServiceDefaults.csproj" />
   </ItemGroup>
   
 </Project>

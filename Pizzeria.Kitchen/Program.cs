@@ -5,11 +5,13 @@ using Wolverine.RabbitMQ;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddServiceDefaults();
+
 builder.Services.AddLogging(options => options.AddSeq());
 
 builder.Host.UseWolverine(options =>
 {
-    var rabbitMqConnectionString = builder.Configuration.GetConnectionString("RabbitMQ");
+    var rabbitMqConnectionString = builder.Configuration.GetConnectionString("rabbitmq");
     if (string.IsNullOrWhiteSpace(rabbitMqConnectionString))
     {
         throw new ApplicationException("RabbitMQ connection string is missing");
@@ -31,5 +33,7 @@ builder.Host.UseWolverine(options =>
 });
 
 var app = builder.Build();
+
+app.MapDefaultEndpoints();
 
 app.Run();

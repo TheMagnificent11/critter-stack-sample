@@ -13,13 +13,15 @@ using Wolverine.RabbitMQ;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var postgresSqlConnectionString = builder.Configuration.GetConnectionString("Postgres");
+builder.AddServiceDefaults();
+
+var postgresSqlConnectionString = builder.Configuration.GetConnectionString("postgres");
 if (string.IsNullOrWhiteSpace(postgresSqlConnectionString))
 {
     throw new ApplicationException("Postgres connection string is missing");
 }
 
-var rabbitMqConnectionString = builder.Configuration.GetConnectionString("RabbitMQ");
+var rabbitMqConnectionString = builder.Configuration.GetConnectionString("rabbitmq");
 if (string.IsNullOrWhiteSpace(rabbitMqConnectionString))
 {
     throw new ApplicationException("RabbitMQ connection string is missing");
@@ -72,6 +74,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddWolverineHttp();
 
 var app = builder.Build();
+
+app.MapDefaultEndpoints();
 
 app.UseHttpsRedirection();
 
