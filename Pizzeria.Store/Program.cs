@@ -42,7 +42,10 @@ builder.Services.AddCorrelate(options =>
 
 builder.Host.UseWolverine(options =>
 {
-    options.UseRabbitMq(rabbit => rabbit.HostName = rabbitMqConnectionString);
+    options.UseRabbitMq(configuration =>
+    {
+        configuration.HostName = rabbitMqConnectionString;
+    });
     options.UseFluentValidation();
 
     options.PublishMessage<OrderPlacedEvent>()

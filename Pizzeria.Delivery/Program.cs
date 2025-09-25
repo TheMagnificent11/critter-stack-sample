@@ -15,7 +15,10 @@ builder.Host.UseWolverine(options =>
         throw new ApplicationException("RabbitMQ connection string is missing");
     }
 
-    options.UseRabbitMq(rabbit => rabbit.HostName = rabbitMqConnectionString);
+    options.UseRabbitMq(configuration =>
+    {
+        configuration.HostName = rabbitMqConnectionString;
+    });
 
     options.ListenToRabbitQueue(QueueNames.DeliveryOrders)
         .PreFetchCount(10)

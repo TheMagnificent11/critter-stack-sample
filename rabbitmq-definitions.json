@@ -20,6 +20,17 @@
       "name": "/"
     }
   ],
+  "exchanges": [
+    {
+      "name": "wolverine-dead-letter-queue",
+      "vhost": "/",
+      "type": "direct",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    }
+  ],
   "queues": [
     {
       "name": "orders",
