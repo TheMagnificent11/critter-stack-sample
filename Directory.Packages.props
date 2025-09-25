@@ -4,16 +4,16 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="Correlate.AspNetCore" Version="5.2.0" />
-    <PackageVersion Include="Marten" Version="6.4.1" />
-    <PackageVersion Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0" />
-    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
-    <PackageVersion Include="Seq.Extensions.Logging" Version="6.1.0" />
+    <PackageVersion Include="Correlate.AspNetCore" Version="6.0.0" />
+    <PackageVersion Include="Marten" Version="8.11.0" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.9" />
+    <PackageVersion Include="Seq.Extensions.Logging" Version="8.0.0" />
     <PackageVersion Include="StyleCop.Analyzers" Version="1.1.118" />
-    <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-    <PackageVersion Include="WolverineFx" Version="1.13.2" />
-    <PackageVersion Include="WolverineFx.FluentValidation" Version="1.13.2" />
-    <PackageVersion Include="WolverineFx.Http" Version="1.13.2" />
-    <PackageVersion Include="WolverineFx.RabbitMQ" Version="1.13.2" />
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="9.0.4" />
+    <PackageVersion Include="WolverineFx" Version="4.12.2" />
+    <PackageVersion Include="WolverineFx.FluentValidation" Version="4.12.2" />
+    <PackageVersion Include="WolverineFx.Http" Version="4.12.2" />
+    <PackageVersion Include="WolverineFx.RabbitMQ" Version="4.12.2" />
   </ItemGroup>
 </Project>
