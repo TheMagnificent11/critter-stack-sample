@@ -3,7 +3,7 @@ using Aspire.Hosting;
 var builder = DistributedApplication.CreateBuilder(args);
 
 // Add infrastructure services
-var postgres = builder.AddPostgreSQL("postgres")
+var postgres = builder.AddPostgres("postgres")
     .WithPgAdmin()
     .AddDatabase("pizzeria");
 

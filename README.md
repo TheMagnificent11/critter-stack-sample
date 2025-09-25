@@ -1,6 +1,6 @@
 # Critter Stack Sample/Experiment
 
-This repo contains a sample application that I used to experiment with the [Marten](https://martendb.io/) and [Wolverine](https://wolverine.netlify.app/).
+This repo contains a sample application that I used to experiment with the [Marten](https://martendb.io/) and [Wolverine](https://wolverine.netlify.app/) running on .NET Aspire.
 
 ## Application Architecture
 
@@ -13,7 +13,7 @@ There are the following microservices in the application.
 - `Pizzeria.Store`
   - Has to REST endpoints:
     - `GET /menu` - Returns the menu
-	- `POST /order` - Takes an order
+	- `POST /orders` - Takes an order
 - `Pizzeria.Kitchen`
   - Simulates the cooking of pizzas
 - `Pizzeria.Delivery`
@@ -29,10 +29,53 @@ There are the following microservices in the application.
 
 ## Running the Application
 
+### Prerequisites
+
+1. Install the .NET Aspire workload:
+   ```bash
+   dotnet workload install aspire
+   ```
+
+2. Trust the .NET development certificates:
+   ```bash
+   dotnet dev-certs https --trust
+   ```
+
+### Starting the Application
+
 1. Clone this repo.
-2. Run `docker-compose up` to start the RabbitMQ, PostgreSQL and Seq containers.
-3. Run `dotnet run --project ./Pizzeria.Store/Pizzeria.Store.csproj` to start the `Pizzeria.Store` service.
-4. Run `dotnet run --project ./Pizzeria.Kitchen/Pizzeria.Kitchen.csproj` to start the `Pizzeria.Kitchen` service.
-5. Run `dotnet run --project ./Pizzeria.Delivery/Pizzeria.Delivery.csproj` to start the `Pizzeria.Delivery` service.
-6. Send an order to the Pizza Store using the `POST /order` endpoint
-7. Check the logs in [Seq](http://localhost:5341/#/events) for each service to see the sequence of events.
+2. Start the Aspire application:
+   ```bash
+   dotnet run --project ./Pizzeria.AppHost/Pizzeria.AppHost.csproj
+   ```
+3. Navigate to the Aspire dashboard (typically at `https://localhost:15888`) to monitor all services.
+4. Open the `Pizzeria.Store` service from the dashboard and navigate to its Swagger UI.
+5. Send an order to the Pizza Store using the `POST /orders` endpoint with the following JSON:
+   ```json
+   {
+     "customerName": "Kobbie Mainoo",
+     "deliveryAddress": "Locker 37, Home Dressing Room, Old Trafford",
+     "pizzaIds": [3, 7]
+   }
+   ```
+6. Check the logs in the Aspire dashboard for each service to see the sequence of events.
+
+### Infrastructure Services
+
+The application uses the following infrastructure services managed by Aspire:
+
+- **PostgreSQL** - Database for storing orders
+- **RabbitMQ** - Message broker for service communication  
+- **Seq** - Centralized logging
+
+All services are automatically configured with service discovery and connection strings are managed by Aspire.
+
+## Traditional Docker Compose Setup
+
+If you prefer to run the application without Aspire, you can still use the traditional approach:
+
+1. Run `docker-compose up` to start the RabbitMQ, PostgreSQL and Seq containers.
+2. Run `dotnet run --project ./Pizzeria.Store/Pizzeria.Store.csproj` to start the `Pizzeria.Store` service.
+3. Run `dotnet run --project ./Pizzeria.Kitchen/Pizzeria.Kitchen.csproj` to start the `Pizzeria.Kitchen` service.
+4. Run `dotnet run --project ./Pizzeria.Delivery/Pizzeria.Delivery.csproj` to start the `Pizzeria.Delivery` service.
+5. Check the logs in [Seq](http://localhost:5341/#/events) for each service to see the sequence of events.
