@@ -1,29 +1,30 @@
 using Aspire.Hosting;
+using Pizzeria.Common;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
 // Add infrastructure services
-var postgres = builder.AddPostgres("postgres")
+var databaseServer = builder.AddPostgres(ServiceNames.DatabaseServer)
     .WithPgAdmin()
-    .AddDatabase("pizzeria");
+    .AddDatabase(ServiceNames.StoreDatabase);
 
-var rabbitmq = builder.AddRabbitMQ("rabbitmq")
+var messageBroker = builder.AddRabbitMQ(ServiceNames.MessageBroker)
     .WithManagementPlugin();
 
-var seq = builder.AddSeq("seq");
+var seq = builder.AddSeq(ServiceNames.Logging);
 
 // Add application services
-var store = builder.AddProject<Projects.Pizzeria_Store>("pizzeria-store")
-    .WithReference(postgres)
-    .WithReference(rabbitmq)
+var store = builder.AddProject<Projects.Pizzeria_Store>(ServiceNames.Store)
+    .WithReference(databaseServer)
+    .WithReference(messageBroker)
     .WithReference(seq);
 
-builder.AddProject<Projects.Pizzeria_Kitchen>("pizzeria-kitchen")
-    .WithReference(rabbitmq)
+builder.AddProject<Projects.Pizzeria_Kitchen>(ServiceNames.Kitchen)
+    .WithReference(messageBroker)
     .WithReference(seq);
 
-builder.AddProject<Projects.Pizzeria_Delivery>("pizzeria-delivery")
-    .WithReference(rabbitmq)
+builder.AddProject<Projects.Pizzeria_Delivery>(ServiceNames.Delivery)
+    .WithReference(messageBroker)
     .WithReference(seq);
 
 builder.Build().Run();

@@ -11,7 +11,7 @@ builder.Services.AddLogging(options => options.AddSeq());
 
 builder.Host.UseWolverine(options =>
 {
-    var rabbitMqConnectionString = builder.Configuration.GetConnectionString("rabbitmq");
+    var rabbitMqConnectionString = builder.Configuration.GetConnectionString(ServiceNames.MessageBroker);
     if (string.IsNullOrWhiteSpace(rabbitMqConnectionString))
     {
         throw new ApplicationException("RabbitMQ connection string is missing");

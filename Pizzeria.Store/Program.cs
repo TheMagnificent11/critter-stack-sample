@@ -15,13 +15,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 
-var postgresSqlConnectionString = builder.Configuration.GetConnectionString("postgres");
+var postgresSqlConnectionString = builder.Configuration.GetConnectionString(ServiceNames.DatabaseServer);
 if (string.IsNullOrWhiteSpace(postgresSqlConnectionString))
 {
     throw new ApplicationException("Postgres connection string is missing");
 }
 
-var rabbitMqConnectionString = builder.Configuration.GetConnectionString("rabbitmq");
+var rabbitMqConnectionString = builder.Configuration.GetConnectionString(ServiceNames.MessageBroker);
 if (string.IsNullOrWhiteSpace(rabbitMqConnectionString))
 {
     throw new ApplicationException("RabbitMQ connection string is missing");
