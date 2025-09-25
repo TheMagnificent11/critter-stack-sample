@@ -15,7 +15,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 
-var postgresSqlConnectionString = builder.Configuration.GetConnectionString(ServiceNames.DatabaseServer);
+var postgresSqlConnectionString = builder.Configuration.GetConnectionString(ServiceNames.StoreDatabase);
 if (string.IsNullOrWhiteSpace(postgresSqlConnectionString))
 {
     throw new ApplicationException("Postgres connection string is missing");
