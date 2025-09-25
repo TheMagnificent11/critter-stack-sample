@@ -44,10 +44,13 @@ builder.Services.AddCorrelate(options =>
 
 builder.Host.UseWolverine(options =>
 {
-    options.UseRabbitMq(configuration =>
+    var rabbitMqConnectionString = builder.Configuration.GetConnectionString(ServiceNames.MessageBroker);
+    if (string.IsNullOrWhiteSpace(rabbitMqConnectionString))
     {
-        configuration.HostName = rabbitMqConnectionString;
-    });
+        throw new ApplicationException("RabbitMQ connection string is missing");
+    }
+
+    options.UseRabbitMq(rabbitMqConnectionString);
     options.UseFluentValidation();
 
     options.PublishMessage<OrderPlacedEvent>()
