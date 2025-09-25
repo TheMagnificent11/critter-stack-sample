@@ -1,10 +1,11 @@
 using Correlate.AspNetCore;
 using Correlate.DependencyInjection;
+using JasperFx;
 using Marten;
+using Marten.Services.Json;
 using Pizzeria.Common;
 using Pizzeria.Domain;
 using Pizzeria.Store;
-using Weasel.Core;
 using Wolverine;
 using Wolverine.FluentValidation;
 using Wolverine.Http;
@@ -29,11 +30,8 @@ builder.Services.AddLogging(options => options.AddSeq());
 builder.Services.AddMarten(options =>
 {
     options.Connection(postgresSqlConnectionString);
-    options.AutoCreateSchemaObjects = AutoCreate.All;
-    options.UseDefaultSerialization(
-        serializerType: Marten.Services.Json.SerializerType.SystemTextJson,
-        enumStorage: EnumStorage.AsString,
-        casing: Casing.CamelCase);
+    options.AutoCreateSchemaObjects = JasperFx.AutoCreate.All;
+    options.UseSystemTextJsonForSerialization();
 });
 
 builder.Services.AddCorrelate(options =>
@@ -44,7 +42,10 @@ builder.Services.AddCorrelate(options =>
 
 builder.Host.UseWolverine(options =>
 {
-    options.UseRabbitMq(rabbit => rabbit.HostName = rabbitMqConnectionString);
+    options.UseRabbitMq(configuration =>
+    {
+        configuration.HostName = rabbitMqConnectionString;
+    });
     options.UseFluentValidation();
 
     options.PublishMessage<OrderPlacedEvent>()
@@ -68,6 +69,7 @@ builder.Host.UseWolverine(options =>
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddWolverineHttp();
 
 var app = builder.Build();
 

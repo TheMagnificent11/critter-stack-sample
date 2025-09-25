@@ -9,7 +9,16 @@ builder.Services.AddLogging(options => options.AddSeq());
 
 builder.Host.UseWolverine(options =>
 {
-    options.UseRabbitMq(rabbit => rabbit.HostName = builder.Configuration.GetConnectionString("RabbitMQ"));
+    var rabbitMqConnectionString = builder.Configuration.GetConnectionString("RabbitMQ");
+    if (string.IsNullOrWhiteSpace(rabbitMqConnectionString))
+    {
+        throw new ApplicationException("RabbitMQ connection string is missing");
+    }
+
+    options.UseRabbitMq(configuration =>
+    {
+        configuration.HostName = rabbitMqConnectionString;
+    });
 
     options.ListenToRabbitQueue(QueueNames.DeliveryOrders)
         .PreFetchCount(10)
