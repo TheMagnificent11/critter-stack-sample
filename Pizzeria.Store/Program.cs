@@ -91,4 +91,4 @@ app.UseCorrelate();
 
 app.MapWolverineEndpoints();
 
-app.Run();
+await app.RunAsync();

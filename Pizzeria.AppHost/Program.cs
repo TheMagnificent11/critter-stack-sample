@@ -27,4 +27,4 @@ builder.AddProject<Projects.Pizzeria_Delivery>(ServiceNames.Delivery)
     .WithReference(messageBroker)
     .WithReference(seq);
 
-builder.Build().Run();
+await builder.Build().RunAsync();
