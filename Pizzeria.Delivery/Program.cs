@@ -18,8 +18,7 @@ builder.Host.UseWolverine(options =>
     }
 
     options.UseRabbitMq(rabbitMqConnectionString)
-        .AutoProvision()
-        .AutoPurgeOnStartup();
+        .AutoProvision();
 
     options.ListenToRabbitQueue(QueueNames.DeliveryOrders)
         .PreFetchCount(10)

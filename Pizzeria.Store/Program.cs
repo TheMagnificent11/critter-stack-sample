@@ -51,8 +51,7 @@ builder.Host.UseWolverine(options =>
     }
 
     options.UseRabbitMq(rabbitMqConnectionString)
-        .AutoProvision()
-        .AutoPurgeOnStartup();
+        .AutoProvision();
     options.UseFluentValidation();
 
     options.PublishMessage<OrderPlacedEvent>()
